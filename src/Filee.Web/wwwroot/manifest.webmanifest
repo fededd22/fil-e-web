@@ -1,0 +1,39 @@
+{
+  "name": "Filee",
+  "short_name": "Filee",
+  "description": "Drag. Drop. Converted.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#F7F6F2",
+  "theme_color": "#534AB7",
+  "icons": [
+    {
+      "src": "icons/filee.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/filee.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "share_target": {
+    "action": "/share",
+    "method": "POST",
+    "enctype": "multipart/form-data",
+    "params": {
+      "files": [
+        {
+          "name": "files",
+          "accept": [
+            "*/*"
+          ]
+        }
+      ]
+    }
+  }
+}
