@@ -1,0 +1,15 @@
+**/bin/
+**/obj/
+**/.vs/
+**/.vscode/
+**/.idea/
+**/TestResults/
+tests/
+artifacts/
+publish/
+Releases/
+engines/
+build/.cache/
+docs/
+.git/
+**/*.user
