@@ -1,0 +1,33 @@
+<!--
+  Filee.Web: Filee as a web page. The same engines, presets, donut toolbars and conversion pipeline as the desktop
+  app, served by ASP.NET Core to any device with a browser (phone, tablet, computer). Files are uploaded, converted
+  on the server with Filee.Core / Filee.Engines, and downloaded back. Built into a container by the Dockerfile at the
+  repository root.
+-->
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <AssemblyName>filee-web</AssemblyName>
+    <RootNamespace>Filee.Web</RootNamespace>
+    <InvariantGlobalization>false</InvariantGlobalization>
+    <!-- Engines load native libraries (ImageMagick, Pdfium, Skia): keep the full framework, no trimming. -->
+    <PublishTrimmed>false</PublishTrimmed>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Filee.Core\Filee.Core.csproj" />
+    <ProjectReference Include="..\Filee.Engines\Filee.Engines.csproj" />
+  </ItemGroup>
+
+  <!-- The app's translation files: preset names, error messages and notices in every language Filee has. -->
+  <ItemGroup>
+    <EmbeddedResource Include="..\Filee.App\Assets\i18n\*.json" LogicalName="Filee.Web.i18n.%(Filename).json" />
+    <!-- Languages only the web page has (French), over the English keys. -->
+    <EmbeddedResource Include="i18n\*.json" LogicalName="Filee.Web.i18n.%(Filename).json" />
+  </ItemGroup>
+
+  <!-- The app icon, served as the page's icon. -->
+  <ItemGroup>
+    <Content Include="..\Filee.App\Assets\Icons\filee.png" Link="wwwroot\icons\filee.png" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
+    <Content Include="..\Filee.App\Assets\Icons\filee.svg" Link="wwwroot\icons\filee.svg" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
+  </ItemGroup>
+</Project>
